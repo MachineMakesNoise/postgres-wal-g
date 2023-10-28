@@ -4,7 +4,7 @@ Bare bones container combining default [Postgres](https://www.postgresql.org/) a
 
 ## Tag
 
-Tag name comes from : \<Postgres image tag\>-\<WAL-G binary\>.
+Tag name comes from : \<Postgres image\>-\<WAL-G binary\>.
 
 ## Missing a release?
 
