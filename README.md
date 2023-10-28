@@ -13,7 +13,7 @@ Since this contains a random runnable binary file (WAL-G), I'm a bit hesitant of
 For private use/paranoia: 
 - Fork.
 - Add WAL-G binary to files.
-- Change build-and-public-images.yml file to suit Your needs (usually change jobs.build.strategy.matrix.include to point to the new binary and Postgres tag).
+- Change build-and-public-images.yml file to suit Your needs (usually change jobs.build.strategy.matrix.include to point to the new version, binary and Postgres image combination).
 - Commit/run Github actions.
 
 If You wish for me to publish Your new combination, use Github issue template for new combination and I will add the combination to build pipeline as soon as I can.
