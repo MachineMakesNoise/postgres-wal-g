@@ -14,6 +14,8 @@ jobs:
             wal-g: 2.0.1-wal-g-pg-ubuntu-20.04-amd64
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout
+      uses: actions/checkout@v4
     - name: Create Dockerfile for the combination
       run: |
         cat <<EOF > Dockerfile
