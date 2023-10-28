@@ -7,6 +7,9 @@ on:
 
 jobs:
   build-and-push-image:
+    permissions:
+      packages: write
+      contents: read
     strategy:
       matrix:
         include:
