@@ -1,10 +1,14 @@
 # Postgres + WAL-G
 
-Bare bones container combining default [Postgres](https://www.postgresql.org/) and [WAL-G](https://wal-g.readthedocs.io/).
+Bare bones container combining default [Postgres](https://www.postgresql.org/) and [WAL-G](https://wal-g.readthedocs.io/). There is no configuration added for WAL-G so You need to configure it Yourself, this image just adds it to the default Postgres image.
 
 ## Tag
 
 Tag name comes from : \<Postgres image\>_\<WAL-G binary\>.
+
+## WAL-G
+
+WAL-G binary can be found at /usr/local/bin/wal-g.
 
 ## Missing a release?
 
