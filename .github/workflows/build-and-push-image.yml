@@ -1,0 +1,39 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  build-and-push-image:
+    strategy:
+      matrix:
+        include:
+          - postgres: 16.0-bookworm
+            wal-g: 2.0.1-wal-g-pg-ubuntu-20.04-amd64
+    runs-on: ubuntu-latest
+    steps:
+    - name: Create Dockerfile for the combination
+      run: |
+        cat <<EOF > Dockerfile
+        FROM postgres:${{ matrix.postgres }}
+        
+        COPY files/${{ matrix.wal-g }} /usr/local/bin/wal-g
+        EOF
+    - name: Log in to the Container registry
+      uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build and push the image
+      uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
+      with:
+        context: .
+        file: ./Dockerfile
+        push: true
+        tags: ${{ matrix.postgres }}-${{ matrix.wal-g }}
+        labels: ${{ steps.meta.outputs.labels }}
+
+
