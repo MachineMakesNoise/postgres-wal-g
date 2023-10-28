@@ -29,10 +29,10 @@ jobs:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-    - id: lowercase-repository
+    - name: Lowercase repository and image tag
       run: |
         echo IMAGE_REPOSITORY=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
-        echo IMAGE_TAG=$(echo "postgres-wal-g:${{ matrix.postgres }}-${{ matrix.wal-g }}" | tr '[:upper:]' '[:lower:]' | awk '{split($0,a,"/"); print a[3]}') >> $GITHUB_ENV
+        echo IMAGE_TAG=$(echo "postgres-wal-g:${{ matrix.postgres }}-${{ matrix.wal-g }}" | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
     - name: Build and push the image
       uses: docker/build-push-action@v5
       with:
