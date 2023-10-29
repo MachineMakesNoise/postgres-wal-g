@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - tag: docker.io-postgres-16.0-bookworm_2.0.1-wal-g-pg-ubuntu-20.04-amd64
+          - name: docker.io-postgres-16.0-bookworm_2.0.1-wal-g-pg-ubuntu-20.04-amd64
             postgres-image: docker.io/postgres:16.0-bookworm
             wal-g-binary: 2.0.1-wal-g-pg-ubuntu-20.04-amd64
     runs-on: ubuntu-latest
@@ -33,10 +33,10 @@ jobs:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-    - name: Lowercase repository and image tag
+    - name: Lowercase repository and image name
       run: |
         echo IMAGE_REPOSITORY=$(echo "ghcr.io/${{ github.repository }}" | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
-        echo IMAGE=$(echo "${{ matrix.tag }}" | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
+        echo IMAGE=$(echo "${{ matrix.name }}:${{ github.run_number }}" | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
     - name: Build and push the image
       uses: docker/build-push-action@v5
       with:
