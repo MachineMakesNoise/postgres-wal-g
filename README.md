@@ -4,7 +4,9 @@ Bare bones container combining default [Postgres](https://www.postgresql.org/) a
 
 ## Images 
 
-docker.io-postgres-16.0-bookworm_2.0.1-wal-g-pg-ubuntu-20.04-amd64:latest
+Currently published images : 
+
+- ghcr.io/machinemakesnoise/postgres-wal-g/docker.io-postgres-16.0-bookworm_2.0.1-wal-g-pg-ubuntu-20.04-amd64:latest
 
 ## Name
 
